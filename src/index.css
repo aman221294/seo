@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-sans: 'Inter', sans-serif;
+
+    /* Default (Royal) Theme Variables */
+    --card-bg-light: rgba(255, 255, 255, 0.92);
+    --card-bg-dark: rgba(15, 23, 42, 0.85);
+    --card-border-light: rgba(226, 232, 240, 0.9);
+    --card-border-dark: rgba(255, 255, 255, 0.1);
+    --card-glow-light: rgba(37, 99, 235, 0.15);
+    --card-glow-dark: rgba(6, 182, 212, 0.22);
+    --section-bg-light: #f8fafc;
+    --section-bg-alt-light: #f1f5f9;
+    --theme-primary: #2563eb;
+    --theme-secondary: #06b6d4;
+  }
+
+  /* Emerald Theme */
+  :root[data-theme="emerald"] {
+    --card-bg-light: rgba(240, 253, 250, 0.92);
+    --card-bg-dark: rgba(6, 78, 59, 0.35);
+    --card-border-light: rgba(167, 243, 208, 0.9);
+    --card-border-dark: rgba(16, 185, 129, 0.25);
+    --card-glow-light: rgba(16, 185, 129, 0.18);
+    --card-glow-dark: rgba(20, 184, 166, 0.25);
+    --section-bg-light: #f0fdf4;
+    --section-bg-alt-light: #ecfdf5;
+    --theme-primary: #10b981;
+    --theme-secondary: #14b8a6;
+  }
+
+  /* Violet Theme */
+  :root[data-theme="violet"] {
+    --card-bg-light: rgba(250, 245, 255, 0.92);
+    --card-bg-dark: rgba(88, 28, 135, 0.35);
+    --card-border-light: rgba(233, 213, 255, 0.9);
+    --card-border-dark: rgba(168, 85, 247, 0.25);
+    --card-glow-light: rgba(147, 51, 234, 0.18);
+    --card-glow-dark: rgba(217, 70, 239, 0.25);
+    --section-bg-light: #faf5ff;
+    --section-bg-alt-light: #f3e8ff;
+    --theme-primary: #9333ea;
+    --theme-secondary: #d946ef;
+  }
+
+  /* Onyx Gold Theme */
+  :root[data-theme="onyx"] {
+    --card-bg-light: rgba(254, 252, 232, 0.92);
+    --card-bg-dark: rgba(30, 27, 75, 0.45);
+    --card-border-light: rgba(254, 240, 138, 0.9);
+    --card-border-dark: rgba(245, 158, 11, 0.3);
+    --card-glow-light: rgba(245, 158, 11, 0.2);
+    --card-glow-dark: rgba(245, 158, 11, 0.3);
+    --section-bg-light: #fefce8;
+    --section-bg-alt-light: #fef9c3;
+    --theme-primary: #f59e0b;
+    --theme-secondary: #eab308;
+  }
+
+  /* Sunset Rose Theme */
+  :root[data-theme="rose"] {
+    --card-bg-light: rgba(255, 241, 242, 0.92);
+    --card-bg-dark: rgba(136, 19, 55, 0.35);
+    --card-border-light: rgba(254, 205, 211, 0.9);
+    --card-border-dark: rgba(244, 63, 94, 0.25);
+    --card-glow-light: rgba(244, 63, 94, 0.2);
+    --card-glow-dark: rgba(251, 113, 133, 0.25);
+    --section-bg-light: #fff1f2;
+    --section-bg-alt-light: #ffe4e6;
+    --theme-primary: #f43f5e;
+    --theme-secondary: #fb7185;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Custom Utilities for Awwwards-level Glassmorphism & Micro-Interactions */
+.glass-panel {
+  background: var(--card-bg-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border-light);
+}
+
+.dark .glass-panel {
+  background: var(--card-bg-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border-dark);
+}
+
+.glass-card {
+  background: var(--card-bg-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border-light);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-card {
+  background: var(--card-bg-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border-dark);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -10px var(--card-glow-light), 0 8px 15px -6px var(--card-glow-light);
+  border-color: var(--theme-primary);
+}
+
+.dark .glass-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px var(--card-glow-dark);
+  border-color: var(--theme-secondary);
+}
+
+/* Custom Animated Gradient Background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(-45deg, #eff6ff, #e0f2fe, #f0fdf4, #faf5ff);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.dark .animated-gradient-bg {
+  background: linear-gradient(-45deg, #0f172a, #0b1329, #082f49, #1e1b4b);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-2deg);
+  }
+}
+
+.animate-float-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Pulse Glow Effect */
+.glow-blue {
+  box-shadow: 0 0 40px -5px rgba(37, 99, 235, 0.3);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 40px -5px rgba(6, 182, 212, 0.3);
+}
